@@ -1,0 +1,105 @@
+body {
+    font-family: Arial, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+/* ----- Formulaire ----- */
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+form label {
+    width: 120px;
+    text-align: right;
+    padding-right: 5px;
+    line-height: 30px;
+}
+
+form input {
+    padding: 5px 8px;
+    flex: 1;
+}
+
+form button {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ----- Tab produits ----- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #474747;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+/* ----- Boutons actions ----- */
+button {
+    padding: 5px 10px;
+    margin: 5px 0; /* marge verticale pour sauter une ligne */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Modifier */
+button.modify { 
+    background-color: #2196F3;
+    color: white;
+}
+/* Supprimer */
+button.delete { 
+    background-color: #f44336;
+    color: white;
+}
+
+/* ----- Pagination ----- */
+#prevPage, #nextPage {
+    padding: 6px 12px;
+    margin: 5px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}

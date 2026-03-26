@@ -51,7 +51,7 @@ def supprimer_produit(request, id):
 
 
 # ----- Afficher liste produits + pagination -----
-# Objectif : afficher liste avec 5 produits par page + pagination
+# Objectif : trier par id + afficher liste avec 5 produits par page + pagination
 
 @api_view(["GET"])
 def liste_produits(request):
