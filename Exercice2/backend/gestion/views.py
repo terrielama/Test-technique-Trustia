@@ -120,5 +120,27 @@ def detail_facture(request, id):
 
     details = facture.details.all()  
 
+    produits = []
+    total = 0
+    total_quantite = 0
 
-    
+    for detail in details:
+        total_ligne = detail.quantite * detail.produit.prix
+
+        produits.append({
+            "id": detail.produit.id,
+            "nom": detail.produit.nom,
+            "prix": detail.produit.prix,
+            "quantite": detail.quantite,
+            "total": total_ligne
+        })
+
+        total += total_ligne
+        total_quantite += detail.quantite
+
+    return Response({
+        "facture_id": facture.id,
+        "produits": produits,
+        "total_produits": total_quantite,
+        "total_prix": total
+    })
