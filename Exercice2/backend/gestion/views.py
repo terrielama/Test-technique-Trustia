@@ -1,7 +1,7 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
-from .models import Produit
+from .models import Produit, Facture, DetailFacture
 from .serializers import ProduitSerializer
 from django.core.paginator import Paginator
 
@@ -72,3 +72,53 @@ def liste_produits(request):
     except Exception as e:
         # Retourne l'erreur pour debug
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+    
+
+# ----------------------- Facturation -----------------------
+# ----- Créer facture -----
+# Objectif : créer une facture avec plusieurs produits + quantités
+
+@api_view(["POST"])
+def creer_facture(request):
+    data = request.data
+
+    if "produits" not in data:
+        return Response({"error": "Liste produits manquante"}, status=400)
+
+    facture = Facture.objects.create()
+
+    for item in data["produits"]:
+        produit_id = item.get("produit_id")
+        quantite = item.get("quantite")
+
+        if not produit_id or not quantite:
+            return Response({"error": "Données invalides"}, status=400)
+
+        try:
+            produit = Produit.objects.get(id=produit_id)
+        except Produit.DoesNotExist:
+            return Response({"error": f"Produit {produit_id} introuvable"}, status=404)
+
+        DetailFacture.objects.create(
+            facture=facture,
+            produit=produit,
+            quantite=quantite
+        )
+
+    return Response({
+        "message": "Facture créée",
+        "facture_id": facture.id
+    }, status=201)
+
+
+# ----- Détail facture -----
+# Objectif : afficher produits + total + nombre
+
+@api_view(["GET"])
+def detail_facture(request, id):
+    facture = Facture.objects.get(id=id)
+
+    details = facture.details.all()  
+
+
+    
