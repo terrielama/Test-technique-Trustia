@@ -160,6 +160,7 @@ button.supprimer {
 
 /* ---------- Facture (création et liste) ---------- */
 
+
 #produitsContainer, #produitsFacture {
     display: flex;
     flex-direction: column;
@@ -245,3 +246,14 @@ button.supprimer {
     cursor: pointer;
 }
 
+.scrollable {
+    max-height: 400px; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+}

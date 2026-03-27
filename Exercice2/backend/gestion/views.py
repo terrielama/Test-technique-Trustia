@@ -6,7 +6,14 @@ from .serializers import ProduitSerializer
 from django.core.paginator import Paginator
 
 # ---------- Gestion des produits via API ----------
-
+@api_view(["GET"])
+def all_produits(request):
+    try:
+        produits = Produit.objects.all().order_by('id')  # même tri que liste_produits
+        serializer = ProduitSerializer(produits, many=True)
+        return Response({"produits": serializer.data})
+    except Exception as e:
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 # ----- Créer nouveau produit -----
 # Objectif : enregistrer produit dans bdd + le renvoyer 
 
@@ -58,7 +65,6 @@ def liste_produits(request):
     try:
         produits = Produit.objects.all().order_by('id')
 
-        # Pagination
         page_number = request.GET.get('page', 1)
         paginator = Paginator(produits, 5)
         page = paginator.get_page(page_number)
@@ -70,7 +76,6 @@ def liste_produits(request):
             "total_pages": paginator.num_pages
         })
     except Exception as e:
-        # Retourne l'erreur pour debug
         return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
     
 

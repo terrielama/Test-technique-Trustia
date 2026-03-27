@@ -1,10 +1,9 @@
 from django.contrib import admin
 from .models import Produit, Facture, DetailFacture
 
-# Inline pour afficher les details directement dans la facture
 class DetailFactureInline(admin.TabularInline):
     model = DetailFacture
-    extra = 1  # nombre de details vides supplémentaires
+    extra = 1  
     readonly_fields = ('total',)
 
 class FactureAdmin(admin.ModelAdmin):

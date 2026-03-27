@@ -33,3 +33,9 @@ class DetailFacture(models.Model):
     facture = models.ForeignKey(Facture, related_name='details', on_delete=models.CASCADE)
     produit = models.ForeignKey(Produit, on_delete=models.CASCADE)
     quantite = models.IntegerField()
+
+    def total(self):
+        return round(self.produit.prix * self.quantite, 2)
+
+    def __str__(self):
+        return f"{self.produit.nom} x {self.quantite} = {self.total()} €"
