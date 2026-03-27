@@ -3,7 +3,7 @@ window.onload = function () {
 
   // ----- Afficher tous les produits avec champ quantité -----
   function fetchProduits() {
-    fetch("http://127.0.0.1:8000/api/produits/")
+    fetch("http://127.0.0.1:8000/api/produits/all/")
       .then((res) => res.json())
       .then((data) => {
         produitsContainer.innerHTML = ""; // vider container
