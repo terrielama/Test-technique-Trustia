@@ -6,20 +6,22 @@ window.onload = function () {
     fetch("http://127.0.0.1:8000/api/produits/")
       .then((res) => res.json())
       .then((data) => {
-        if (!data.produits || data.produits.length === 0) {
+        produitsContainer.innerHTML = ""; // vider container
+
+        if (data.produits.length === 0) {
           produitsContainer.innerHTML = "<p>Aucun produit disponible.</p>";
           return;
         }
-
-        produitsContainer.innerHTML = ""; // vider le conteneur
 
         data.produits.forEach((p) => {
           const div = document.createElement("div");
           div.className = "produit-facture";
           div.innerHTML = `
-            <span><b>${p.nom}</b> - ${p.prix.toFixed(2)} €</span>
-            <input type="number" min="0" value="0" data-id="${p.id}" class="quantite" style="width:60px; margin-left:10px;">
-          `;
+                        <span class="nom">${p.nom}</span> <span class="prix"> Prix unitaire : ${p.prix.toFixed(2)} €</span>
+                        <div>
+                            Quantité: <input type="number" min="0" value="0" data-id="${p.id}" class="quantite">
+                        </div>
+                    `;
           produitsContainer.appendChild(div);
         });
       })
@@ -55,14 +57,10 @@ window.onload = function () {
         .then((res) => res.json())
         .then((data) => {
           alert(`Facture créée ! ID: ${data.facture_id}`);
-          document.getElementById("factureForm").reset();
-
-          // Rediriger vers la liste des factures
-          window.location.href = "liste_factures.html";
+          window.location.href = "liste_factures.html"; // redirige vers liste des factures
         })
         .catch((err) => console.error("Erreur création facture:", err));
     });
 
-  // Initialisation
   fetchProduits();
 };
