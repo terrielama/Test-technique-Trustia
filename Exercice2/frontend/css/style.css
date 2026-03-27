@@ -1,7 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    max-width: 900px;
-    margin: 0 auto;
+    margin: 0px 90px ;
     padding: 20px;
     background-color: #f9f9f9;
     color: #333;
@@ -9,43 +8,87 @@ body {
 
 h1, h2 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
-/* ----- Formulaire ----- */
+/* ---------- Navbar ---------- */
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    /* border-bottom: 1px solid black; */
+}
+
+.navbar a {
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 9px;
+    background-color: #333;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+#navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover, #navbar a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Formulaires ---------- */
+
 form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 20px;
-    justify-content: center;
-    padding: 10px;
+    flex-direction: column; 
+    gap: 15px;
+    padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
 }
 
 form label {
-    width: 120px;
+    width: 120px; 
     text-align: right;
-    padding-right: 5px;
-    line-height: 30px;
+    padding-right: 10px;
+    font-weight: bold;
 }
 
 form input {
-    padding: 5px 8px;
     flex: 1;
+    max-width: 200px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 form button {
-    padding: 8px 15px;
-    background-color: #4CAF50;
+    align-self: center; 
+    padding: 10px 20px;
+    background-color: #2e2e2e;
+    box-shadow: 0 0 5px rgba(143, 143, 143, 0.1);
+    color: white;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
 }
 
-/* ----- Tab produits ----- */
+
+/* ---------- Tableaux produits ---------- */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -57,7 +100,7 @@ table {
 }
 
 th, td {
-    padding: 10px;
+    padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
 }
@@ -71,35 +114,69 @@ tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-
-/* ----- Boutons actions ----- */
+/* ---------- Boutons actions ---------- */
 button {
-    padding: 5px 10px;
-    margin: 5px 0; /* marge verticale pour sauter une ligne */
+    padding: 6px 12px;
+    margin: 5px auto;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-/* Modifier */
-button.modify { 
-    background-color: #2196F3;
-    color: white;
-}
-/* Supprimer */
-button.delete { 
-    background-color: #f44336;
+button.modifier { 
+    margin-right: 5px;
+    padding: 5px auto;
+    background-color: #555;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
     color: white;
 }
 
-/* ----- Pagination ----- */
+button.supprimer { 
+    padding: 5px auto;
+    background-color: #0a0302;
+    box-shadow: 0 0 5px rgba(143, 143, 143, 0.1);
+    color: white;
+}
+
+
+
+/* ---------- Pagination ---------- */
 #prevPage, #nextPage {
     padding: 6px 12px;
-    margin: 5px;
-    margin-top: 20px;
+    margin: 10px 5px;
     border-radius: 5px;
     border: none;
     background-color: #555;
     color: white;
     cursor: pointer;
+}
+
+#prevPage:hover, #nextPage:hover {
+    background-color: #333;
+}
+
+/* ---------- Facture (création et liste) ---------- */
+#produitsContainer, #produitsFacture {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.produit-facture, .produit {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+}
+
+.produit-facture input, .produit input {
+    width: 60px;
+    margin-left: 10px;
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
 }
