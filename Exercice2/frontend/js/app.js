@@ -1,9 +1,11 @@
 window.onload = function () {
-  // Var globales pour  pagination
+  // Variables globales pour pagination
   let currentPage = 1;
   let totalPages = 1;
 
-  // ----- Afficher  produits + pagination -----
+  const container = document.getElementById("produitsContainer");
+
+  // ----- Afficher les produits + pagination -----
   function fetchProduits(page = 1) {
     fetch(`http://127.0.0.1:8000/api/produits/?page=${page}`)
       .then((res) => res.json())
@@ -11,8 +13,7 @@ window.onload = function () {
         totalPages = data.total_pages;
         currentPage = data.page;
 
-        const container = document.getElementById("produitsContainer");
-        container.innerHTML = ""; // vider le conteneur
+        container.innerHTML = ""; // vide le conteneur avant d'afficher
 
         if (data.produits.length === 0) {
           container.innerHTML = "<p>Aucun produit disponible.</p>";
@@ -21,17 +22,13 @@ window.onload = function () {
             const div = document.createElement("div");
             div.className = "produit";
             div.innerHTML = `
-              <br>
-              <br>
               <span><b>ID:</b> ${p.id}</span>
-              <span><b>Nom:</b> ${p.nom}</span>
-              <span><b>Prix:</b> ${p.prix}</span>
-              <span><b>Date:</b> ${p.date_peremption}</span>
+              <span><b>Nom du produit :</b> ${p.nom}</span>
+              <span><b>Prix:</b> ${p.prix} €</span>
+              <span><b>A consommer avant le :</b> ${p.date_peremption}</span>
               <div>
-              
                 <button class="modifier" onclick="editProduit(${p.id}, '${p.nom}', ${p.prix}, '${p.date_peremption}')">Modifier</button>
                 <button class="supprimer" onclick="deleteProduit(${p.id})">Supprimer</button>
-                <a href="details.html?id=${p.id}">Détails</a>
               </div>
             `;
             container.appendChild(div);
@@ -73,13 +70,13 @@ window.onload = function () {
         .then(() => {
           document.getElementById("produitForm").reset();
           document.getElementById("produitId").value = "";
-          currentPage = 1; 
+          currentPage = 1;
           fetchProduits(currentPage);
         })
         .catch((err) => console.error("Erreur création/modification:", err));
     });
 
-  // ----- Pré-remplir form pour modif -----
+  // ----- Pré-remplir form pour modification -----
   window.editProduit = function (id, nom, prix, date_peremption) {
     document.getElementById("produitId").value = id;
     document.getElementById("nom").value = nom;
@@ -87,7 +84,7 @@ window.onload = function () {
     document.getElementById("date_peremption").value = date_peremption;
   };
 
-  // ----- Suppr produit -----
+  // ----- Supprimer un produit -----
   window.deleteProduit = function (id) {
     if (!confirm("Voulez-vous vraiment supprimer ce produit ?")) return;
 

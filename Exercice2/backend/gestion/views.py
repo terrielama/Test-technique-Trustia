@@ -132,7 +132,7 @@ def detail_facture(request, id):
             "nom": detail.produit.nom,
             "prix": detail.produit.prix,
             "quantite": detail.quantite,
-            "total": total_ligne
+            "total": round(total_ligne, 2)
         })
 
         total += total_ligne
@@ -142,5 +142,23 @@ def detail_facture(request, id):
         "facture_id": facture.id,
         "produits": produits,
         "total_produits": total_quantite,
-        "total_prix": total
+        "total_prix": round(total, 2)
     })
+
+
+# ----- Liste des factures -----
+# Objectif : afficher toutes les factures
+
+@api_view(["GET"])
+def liste_factures(request):
+    factures = Facture.objects.all().order_by("-id")
+
+    data = []
+
+    for f in factures:
+        data.append({
+            "id": f.id,
+            "date": f.date_creation
+        })
+
+    return Response(data)
