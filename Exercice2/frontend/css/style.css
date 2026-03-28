@@ -45,8 +45,8 @@ h1, h2 {
 form {
     display: flex;
     flex-direction: column; 
-    gap: 15px;
-    padding: 20px;
+    gap: 20px;
+    padding: 30px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -56,13 +56,13 @@ form {
 
 .form-row {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 10px;
+    justify-content: center;
+
+    align-items: baseline;
 }
 
 form label {
-    width: 120px; 
+    width: 175px; 
     text-align: right;
     padding-right: 10px;
     font-weight: bold;
@@ -88,6 +88,7 @@ form button {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-top: 15px;
 }
 
 
@@ -158,8 +159,8 @@ button.supprimer {
     background-color: #333;
 }
 
-/* ---------- Facture (création et liste) ---------- */
 
+/* ---------- Facture  ---------- */
 
 #produitsContainer, #produitsFacture {
     display: flex;
@@ -171,7 +172,7 @@ button.supprimer {
     display: flex;
     align-items: center;     
     justify-content: space-between; 
-    padding: 15px 20px;      
+    padding: 10px 15px;      
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 0 3px rgba(0,0,0,0.1);
