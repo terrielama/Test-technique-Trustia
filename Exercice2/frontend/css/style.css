@@ -1,0 +1,259 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0px 90px ;
+    padding: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+ul, span {
+    padding: 10px;
+}
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    /* border-bottom: 1px solid black; */
+}
+
+.navbar a {
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 9px;
+    background-color: #333;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+#navbar a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.navbar a:hover, #navbar a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Formulaires ---------- */
+
+form {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 50px auto 30px auto;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+
+    align-items: baseline;
+}
+
+form label {
+    width: 175px; 
+    text-align: right;
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+form input {
+    flex: 1;
+    max-width: 200px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form button {
+    align-self: center; 
+    padding: 10px 20px;
+    background-color: #2e2e2e;
+    box-shadow: 0 0 5px rgba(143, 143, 143, 0.1);
+    color: white;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+
+/* ---------- Tableaux produits ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #474747;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* ---------- Boutons actions ---------- */
+button {
+    padding: 6px 12px;
+    margin: 5px auto;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.modifier { 
+    margin-right: 5px;
+    padding: 5px auto;
+    background-color: #555;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    color: white;
+}
+
+button.supprimer { 
+    padding: 5px auto;
+    background-color: #0a0302;
+    box-shadow: 0 0 5px rgba(143, 143, 143, 0.1);
+    color: white;
+}
+
+
+/* ---------- Pagination ---------- */
+#prevPage, #nextPage {
+    padding: 6px 12px;
+    margin: 10px 5px;
+    border-radius: 5px;
+    border: none;
+    background-color: #555;
+    color: white;
+    cursor: pointer;
+}
+
+#prevPage:hover, #nextPage:hover {
+    background-color: #333;
+}
+
+
+/* ---------- Facture  ---------- */
+
+#produitsContainer, #produitsFacture {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.produit-facture, .produit {
+    display: flex;
+    align-items: center;     
+    justify-content: space-between; 
+    padding: 10px 15px;      
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    margin: 5px;      
+}
+
+#titre_liste_produit{
+    margin-top: 75px;
+}
+
+.produit-facture input, .produit input {
+    width: 60px;           
+    padding: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;        
+}
+
+
+.facture-detail {
+    max-width: 600px;
+    margin: 0 auto;         
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+.produit-ligne {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 16px;
+}
+
+.produit-ligne span {
+    flex: 1;                  
+    margin-left: 0;         
+}
+
+.produit-ligne .nom {
+    text-align: left;
+}
+
+.produit-ligne .quantite {
+    text-align: center;
+    flex: 0.5;                
+}
+
+.produit-ligne .total {
+    text-align: right;
+    font-weight: bold;
+    flex: 0.7;                
+}
+.facture-detail p {
+    font-weight: bold;
+    text-align: right;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.facture-detail button {
+    display: block;
+    margin: 20px auto 0 auto;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2c2c2c;
+    color: white;
+    cursor: pointer;
+}
+
+.scrollable {
+    max-height: 400px; 
+    overflow-y: auto; 
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+}
